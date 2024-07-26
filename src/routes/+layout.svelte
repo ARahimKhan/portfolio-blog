@@ -7,9 +7,8 @@
 	<div class="flex flex-row h-16 bg-emerald-800 items-center px-5">
     <p class="font-bold text-2xl">Blogfolio</p>
     <div class="flex-1"></div>
-    <a class="navlink" href="/home">Home</a>
-    <a class="navlink" href="/">Projects</a>
-    <a class="navlink" href="/">Blog</a>
+    <a class="navlink" href="/work">Work</a>
+    <a class="navlink" href="/blog">Blog</a>
     <a class="navlink" href="/about">About</a>
   </div>
   <!-- MAIN CONTENT AREA -->

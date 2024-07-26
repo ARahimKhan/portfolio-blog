@@ -5,13 +5,14 @@
 
 	const descriptors = [
 		'Rahim',
+		'backend engineer',
 		'software developer',
 		'programmer',
-		'fullstack developer',
-		'backend engineer'
+		'fullstack developer'
 	];
 	let currentDescriptor = 0;
 	let displayDescriptor = '';
+	let showCursor = false;
 
 	const TICKS_PER_DESCRIPTOR = 80;
 
@@ -27,13 +28,15 @@
 	// Blinking cursor, changing role and adding/removing characters
 	$: {
 		const tempDescriptor = descriptors[currentDescriptor];
+		showCursor = false;
 		if (tick < tempDescriptor.length) {
 			displayDescriptor = tempDescriptor.slice(0, tick + 1);
 		} else if (
 			tick >= tempDescriptor.length &&
 			tick < TICKS_PER_DESCRIPTOR - tempDescriptor.length
 		) {
-			displayDescriptor = tempDescriptor + (tick % 8 > 3 ? '_' : '');
+			displayDescriptor = tempDescriptor;
+			showCursor = tick % 8 > 1;
 		} else if (
 			tick >= TICKS_PER_DESCRIPTOR - tempDescriptor.length &&
 			tick < TICKS_PER_DESCRIPTOR
@@ -48,27 +51,30 @@
 
 <div class="flex flex-col mx-auto w-[60%] py-20">
 	<div class="flex flex-row mb-20">
-		<img class="mr-16 my-auto aspect-square" src="headshot.jpg" alt="headshot" width="280px"/>
+		<img class="mr-16 my-auto aspect-square" src="headshot.jpg" alt="headshot" width="280px" />
 		<div class="flex flex-col justify-center">
 			<p class="font-bold text-8xl font-retro">Hello, World</p>
 			<p class="font-mono text-5xl mt-10 ml-2 h-[100px]">
-				I am {currentDescriptor ? 'a ' : ''}{displayDescriptor}
+				I am {currentDescriptor ? 'a ' : ''}{displayDescriptor}<span
+					class={showCursor ? '' : 'invisible'}>_</span
+				>
 			</p>
 		</div>
 	</div>
-	<div class="flex flex-row mb-16">
+	<div class="flex flex-row mb-20">
 		<div class="flex-1 mr-6">
 			<h2>Who am I</h2>
-			<p class="text-xl mb-5">
+			<p class="text-xl mb-5 text-gray-400">
 				I am a maker, a generalist and a dreamer. Nothing gives me as much enjoyment as designing
 				solutions and seeing them through to completion. I have been playing around with programming
 				languages since I was 12. First learnt game development in C++, made GUIs with Java and dove
 				head first into embedded electronics, no training wheels.
 			</p>
-			<p class="text-xl mb-2">
-        Check out my blog to know more about what interests me. Find me at my socials
-				<span class="md:hidden inline">below.</span><span class="hidden md:inline"
-					>on the right.</span
+			<p class="text-xl mb-2 text-gray-400">
+				I currently work full time as a full stack developer working with Python, Ruby, Javascript and
+        sometimes Java. Check out my blog to know more about what interests me. Find me at my socials
+				<span class="md:hidden inline text-gray-400">below.</span><span
+					class="hidden md:inline text-gray-400">on the right.</span
 				>
 			</p>
 		</div>
@@ -88,7 +94,7 @@
 	</div>
 	<div class="flex-1 mr-6">
 		<h2>Connect with me</h2>
-		<p class="text-xl mb-6">
+		<p class="text-xl mb-6 text-gray-400">
 			Lets build great things together. Find my socials above or just shoot a message below and I
 			will get in touch!
 		</p>

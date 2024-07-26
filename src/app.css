@@ -27,3 +27,7 @@ a {
 h2 {
   @apply text-5xl mb-6 font-display;
 }
+
+h3 {
+  @apply text-3xl mb-6 font-display;
+}
