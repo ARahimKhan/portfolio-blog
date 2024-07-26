@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	background-color: transparent;
+	font-family: 'Inter', sans-serif;
+	@apply text-gray-200;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	overflow: hidden;
+}
+
+a {
+	border: none;
+	width: fit-content;
+	text-decoration: none;
+}
+
+h2 {
+  @apply text-5xl mb-6 font-display;
+}
