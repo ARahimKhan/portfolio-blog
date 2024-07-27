@@ -1,1 +1,1 @@
-<p class="text-gray-400 text-2xl mb-16"><slot></slot></p>
+<p class="text-gray-400 lg:text-2xl text-xl mb-16"><slot></slot></p>

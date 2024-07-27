@@ -1,1 +1,1 @@
-<h1 class="text-8xl font-display mb-6"><slot></slot></h1>
+<h1 class="lg:text-8xl text-6xl font-display mb-6"><slot></slot></h1>

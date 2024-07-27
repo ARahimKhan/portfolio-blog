@@ -4,10 +4,10 @@
 
 <style lang="postcss">
 	.bulleted-list :global(li) {
-		@apply pl-5 mb-2;
+		@apply lg:pl-5 lg:mb-2;
 	}
 
   .bulleted-list :global(ul) {
-		@apply pl-10;
+		@apply lg:pl-10;
 	}
 </style>

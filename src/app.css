@@ -24,9 +24,9 @@ a {
 }
 
 h2 {
-  @apply text-5xl mb-6 font-display;
+  @apply lg:text-5xl text-4xl mb-6 font-display;
 }
 
 h3 {
-  @apply text-3xl mb-6 font-display;
+  @apply lg:text-3xl text-2xl mb-6 font-display;
 }

@@ -1,1 +1,1 @@
-<p class="text-md mb-4"><slot></slot></p>
+<p class="lg:text-lg text-base mb-4"><slot></slot></p>

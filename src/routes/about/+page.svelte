@@ -2,6 +2,8 @@
 	import GithubIcon from '$lib/assets/icons/github.svelte';
 	import LinkedinIcon from '$lib/assets/icons/linkedin.svelte';
 	import EmailIcon from '$lib/assets/icons/email.svelte';
+	import Paragraph from '$lib/blog-components/elements/paragraph.svelte';
+	import SectionHeader from '$lib/blog-components/elements/section-header.svelte';
 
 	const descriptors = [
 		'Rahim',
@@ -49,37 +51,42 @@
 	}
 </script>
 
-<div class="flex flex-col mx-auto w-[60%] py-20">
-	<div class="flex flex-row mb-20">
-		<img class="mr-16 my-auto aspect-square" src="$lib/assets/images/headshot.jpg" alt="headshot" width="280px" />
-		<div class="flex flex-col justify-center">
-			<p class="font-bold text-8xl font-retro">Hello, World</p>
-			<p class="font-mono text-5xl mt-10 ml-2 h-[100px]">
+<div class="flex flex-col mx-auto lg:w-[60%] p-8 lg:px-0 lg:py-20 lg:gap-16 gap-5">
+	<div class="flex lg:flex-row flex-col lg:mb-8 gap-10 lg:gap-0 items-center">
+		<img
+			class="lg:mr-16 my-auto aspect-square lg:w-[280px] w-48"
+			src="$lib/assets/images/headshot.jpg"
+			alt="headshot"
+		/>
+		<div class="flex flex-col justify-center gap-4 lg:gap-0 items-center">
+			<p class="font-bold lg:text-8xl text-5xl font-retro text-center">Hello, World</p>
+			<p class="font-mono lg:text-5xl text-xl lg:mt-10 lg:ml-2 lg:h-[100px] h-[60px]">
 				I am {currentDescriptor ? 'a ' : ''}{displayDescriptor}<span
 					class={showCursor ? '' : 'invisible'}>_</span
 				>
 			</p>
 		</div>
 	</div>
-	<div class="flex flex-row mb-20">
+	<div class="flex lg:flex-row flex-col lg:mb-20">
 		<div class="flex-1 mr-6">
-			<h2>Who am I</h2>
-			<p class="text-xl mb-5 text-gray-400">
+			<SectionHeader>Who am I</SectionHeader>
+			<Paragraph>
 				I am a maker, a generalist and a dreamer. Nothing gives me as much enjoyment as designing
 				solutions and seeing them through to completion. I have been playing around with programming
 				languages since I was 12. First learnt game development in C++, made GUIs with Java and dove
 				head first into embedded electronics, no training wheels.
-			</p>
-			<p class="text-xl mb-2 text-gray-400">
-				I currently work full time as a full stack developer working with Python, Ruby, Javascript and
-        sometimes Java. Check out my blog to know more about what interests me. Find me at my socials
-				<span class="md:hidden inline text-gray-400">below.</span><span
-					class="hidden md:inline text-gray-400">on the right.</span
+			</Paragraph>
+			<Paragraph>
+				I currently work full time as a full stack developer working with Python, Ruby, Javascript
+				and sometimes Java. Check out my blog to know more about what interests me. Find me at my
+				socials
+				<span class="lg:hidden inline">below.</span><span class="hidden lg:inline"
+					>on the right.</span
 				>
-			</p>
+			</Paragraph>
 		</div>
 		<div
-			class="flex flex-col w-32 border-l-[5px] border-l-emerald-900 justify-center items-center gap-5"
+			class="flex lg:flex-col lg:w-32 lg:border-l-[5px] border-l-emerald-900 justify-center items-center gap-5 lg:my-0 my-5"
 		>
 			<a href="https://www.github.com/ARahimKhan" target="_blank">
 				<GithubIcon width="55" height="55" />
@@ -93,11 +100,11 @@
 		</div>
 	</div>
 	<div class="flex-1 mr-6">
-		<h2>Connect with me</h2>
-		<p class="text-xl mb-6 text-gray-400">
+		<SectionHeader>Connect with me</SectionHeader>
+		<Paragraph>
 			Lets build great things together. Find my socials above or just shoot a message below and I
 			will get in touch!
-		</p>
+    </Paragraph>
 		<form class="flex flex-col" method="post">
 			<input type="text" placeholder="Your name" />
 			<input type="text" placeholder="Your email" />

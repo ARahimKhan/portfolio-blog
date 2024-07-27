@@ -8,7 +8,7 @@
 	import SectionBreak from '$lib/blog-components/elements/section-break.svelte';
 </script>
 
-<div class="flex flex-col mx-auto w-[60%] py-20">
+<div class="flex flex-col mx-auto lg:w-[60%] lg:px-0 p-8 lg:py-20">
 	<MainHeader>Etl pipeline</MainHeader>
 	<Subtitle
 		>Performant and scalable data aggregation and transformation pipeline built with Kafka</Subtitle
