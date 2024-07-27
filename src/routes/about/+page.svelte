@@ -1,7 +1,7 @@
 <script lang="ts">
-	import GithubIcon from '$lib/icons/github.svelte';
-	import LinkedinIcon from '$lib/icons/linkedin.svelte';
-	import EmailIcon from '$lib/icons/email.svelte';
+	import GithubIcon from '$lib/assets/icons/github.svelte';
+	import LinkedinIcon from '$lib/assets/icons/linkedin.svelte';
+	import EmailIcon from '$lib/assets/icons/email.svelte';
 
 	const descriptors = [
 		'Rahim',
@@ -51,7 +51,7 @@
 
 <div class="flex flex-col mx-auto w-[60%] py-20">
 	<div class="flex flex-row mb-20">
-		<img class="mr-16 my-auto aspect-square" src="headshot.jpg" alt="headshot" width="280px" />
+		<img class="mr-16 my-auto aspect-square" src="$lib/assets/images/headshot.jpg" alt="headshot" width="280px" />
 		<div class="flex flex-col justify-center">
 			<p class="font-bold text-8xl font-retro">Hello, World</p>
 			<p class="font-mono text-5xl mt-10 ml-2 h-[100px]">

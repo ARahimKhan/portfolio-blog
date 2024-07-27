@@ -1,0 +1,1 @@
+<p class="text-md mb-4"><slot></slot></p>
