@@ -58,8 +58,8 @@
 			src="$lib/assets/images/headshot.jpg"
 			alt="headshot"
 		/>
-		<div class="flex flex-col justify-center gap-4 lg:gap-0 items-center">
-			<p class="font-bold lg:text-8xl text-5xl font-retro text-center">Hello, World</p>
+		<div class="flex flex-col justify-center gap-4 lg:gap-0 items-center lg:items-start">
+			<p class="font-bold lg:text-8xl text-5xl font-retro lg:text-left text-center">Hello, World</p>
 			<p class="font-mono lg:text-5xl text-xl lg:mt-10 lg:ml-2 lg:h-[100px] h-[60px]">
 				I am {currentDescriptor ? 'a ' : ''}{displayDescriptor}<span
 					class={showCursor ? '' : 'invisible'}>_</span
@@ -99,7 +99,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="flex-1 mr-6">
+	<div class="flex-1">
 		<SectionHeader>Connect with me</SectionHeader>
 		<Paragraph>
 			Lets build great things together. Find my socials above or just shoot a message below and I
