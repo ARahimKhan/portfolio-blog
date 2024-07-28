@@ -120,7 +120,7 @@
 					</p>
 				</div>
 				<div
-					class={`lg:w-32 w-5 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}
+					class={`lg:w-32 w-0 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}
 				></div>
 			</a>
 		{/each}
