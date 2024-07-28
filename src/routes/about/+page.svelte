@@ -52,7 +52,7 @@
 </script>
 
 <div class="flex flex-col mx-auto lg:w-[60%] p-8 lg:px-0 lg:py-20 lg:gap-16 gap-5">
-	<div class="flex lg:flex-row flex-col lg:mb-8 gap-10 lg:gap-0 items-center">
+	<div class="flex lg:flex-row flex-col lg:mb-12 gap-10 lg:gap-0 items-center">
 		<img
 			class="lg:mr-16 my-auto aspect-square lg:w-[280px] w-48"
 			src="$lib/assets/images/headshot.jpg"
@@ -67,7 +67,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="flex lg:flex-row flex-col lg:mb-20">
+	<div class="flex lg:flex-row flex-col lg:mb-12">
 		<div class="flex-1 mr-6">
 			<SectionHeader>Who am I</SectionHeader>
 			<Paragraph>

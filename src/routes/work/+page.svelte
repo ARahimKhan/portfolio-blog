@@ -1,4 +1,9 @@
-<script>
+<script lang="ts">
+	import ListIcon from '$lib/assets/icons/list-icon.svelte';
+	import CompactListIcon from '$lib/assets/icons/compact-list-icon.svelte';
+	import GridIcon from '$lib/assets/icons/grid-icon.svelte';
+	import { Result } from 'postcss';
+
 	const content = [
 		{
 			description:
@@ -60,32 +65,127 @@
 			slug: 'snake'
 		}
 	];
+
+	const shortDescription = (desc: string): string => {
+		let truncated = desc.slice(0, 65).split(" ");
+    truncated.pop()
+    const lastCharacter = truncated[truncated.length - 1]
+    truncated[truncated.length - 1] = lastCharacter.replace('.', '').replace(/$/i, '...')
+		return truncated.join(" ");
+	};
+
+	let activeViewMode = 'list';
 </script>
 
-<div class="flex flex-col mx-auto lg:w-[60%] p-8 lg:px-0 lg:py-20 gap-16">
-	<div class="lg:mb-10 mb-2">
-		<h2>My work</h2>
-		<p class="text-xl text-gray-400">
+<div class="flex flex-col mx-auto lg:w-[60%] p-8 lg:px-0 lg:py-20 lg:gap-16 gap-10">
+	<div>
+		<h2 class="mb-3 lg:mb-6">My work</h2>
+		<p class="lg:text-xl text-base text-gray-400">
 			Take a tour through some of my most memorable and rewarding projects
 		</p>
 	</div>
 
-	{#each content as item, i}
-		{@const rev = i % 2}
-		<a
-			class={`flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
-			href={`work/${item.slug}`}
+	<div class="flex flex-row items-center justify-center gap-10">
+		<button class="view-mode-btn grid-view-btn" on:click={() => (activeViewMode = 'grid')}
+			><GridIcon classlist={activeViewMode === 'grid' ? 'active-mode' : ''}></GridIcon></button
 		>
-			<div
-				class={`lg:w-72 lg:basis-0 basis-1/2 grow aspect-square bg-emerald-950 rounded-[4px] ${rev ? 'ml-6 lg:ml-20' : 'mr-6 lg:mr-20'}`}
-			></div>
-			<div class="flex flex-col basis-1/2 lg:flex-1 justify-center">
-				<h2 class="lg:text-5xl text-2xl lg:mb-6 mb-2">{item.title}</h2>
-				<p class="text-[10px] lg:text-base">
-					{item.description}
-				</p>
-			</div>
-			<div class={`lg:w-32 w-0 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}></div>
-		</a>
-	{/each}
+		<button class="view-mode-btn" on:click={() => (activeViewMode = 'list')}
+			><ListIcon
+				classlist={activeViewMode === 'list' ? 'active-mode' : ''}
+				on:click={() => (activeViewMode = 'list')}
+			></ListIcon></button
+		>
+		<button class="view-mode-btn" on:click={() => (activeViewMode = 'compact')}
+			><CompactListIcon
+				classlist={activeViewMode === 'compact' ? 'active-mode' : ''}
+				on:click={() => (activeViewMode = 'compact')}
+			></CompactListIcon></button
+		>
+	</div>
+
+	{#if activeViewMode === 'list'}
+		{#each content as item, i}
+			{@const rev = i % 2}
+			<a
+				class={`flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
+				href={`work/${item.slug}`}
+			>
+				<div
+					class={`lg:w-72 lg:basis-0 basis-1/2 grow aspect-square bg-emerald-950 rounded-[4px] ${rev ? 'ml-6 lg:ml-20' : 'mr-6 lg:mr-20'}`}
+				></div>
+				<div class="flex flex-col basis-1/2 lg:flex-1 justify-center">
+					<h2 class="lg:text-5xl text-2xl lg:mb-6 mb-2">{item.title}</h2>
+					<p class="text-[10px] lg:text-base">
+						{item.description}
+					</p>
+				</div>
+				<div
+					class={`lg:w-32 w-5 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}
+				></div>
+			</a>
+		{/each}
+	{:else if activeViewMode === 'grid'}
+		<div class="grid grid-cols-2 gap-x-8 gap-y-8">
+			{#each content as item}
+				<div class="relative flex flex-col hover:bg-[#0c0c0c] justify-end aspect-square">
+					<a
+						class="flex absolute top-0 bottom-0 left-0 right-0 w-full z-20"
+						href={`/work/${item.slug}`}><br /></a
+					>
+					<div class="absolute bg-emerald-950 top-0 bottom-0 left-0 right-0 rounded-[4px]"></div>
+					<div class="p-5 z-10">
+						<h2 class="lg:text-4xl text-lg mb-4 block">{item.title}</h2>
+						<p class="text-[6px] lg:text-sm">
+							{item.description}
+						</p>
+					</div>
+				</div>
+			{/each}
+		</div>
+	{:else if activeViewMode === 'compact'}
+		{#each content as item, i}
+			<a class="flex hover:bg-[#0c0c0c] gap-8 w-full" href={`work/${item.slug}`}>
+				<div class="lg:w-28 w-16 my-auto aspect-square bg-emerald-950 rounded-[4px]"></div>
+				<div class="flex flex-col flex-1 justify-center">
+					<h2 class="lg:text-2xl text-lg lg:mb-2 mb-1">{item.title}</h2>
+					<p class="text-[12px] lg:text-base block lg:hidden">
+						{shortDescription(item.description)}
+					</p>
+          <p class="text-[12px] lg:text-base hidden lg:block">
+						{item.description}
+					</p>
+				</div>
+			</a>
+		{/each}
+	{/if}
 </div>
+
+<style lang="postcss">
+	.view-mode-btn {
+		@apply hover:bg-neutral-950 rounded-md h-8 w-8 flex items-center justify-center;
+	}
+
+  .view-mode-btn.grid-view-btn {
+		@apply lg:flex hidden;
+	}
+
+	.view-mode-btn :global(svg:not(.active-mode)) {
+		@apply fill-neutral-600 stroke-none;
+	}
+
+	.view-mode-btn :global(svg.active-mode) {
+		@apply fill-emerald-400 stroke-none;
+	}
+
+	.view-mode-btn:hover :global(svg:not(.active-mode)) {
+		@apply fill-neutral-300 stroke-none;
+	}
+
+	.grid > div:hover p {
+		display: block;
+	}
+
+	.grid > div p {
+		display: none;
+	}
+</style>
