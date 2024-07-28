@@ -37,8 +37,10 @@
 	.navlink {
 		justify-content: center;
 		align-content: center;
+    align-items: center;
 		font-family: 'Quicksand', sans-serif;
 		font-weight: 500;
+    display: flex;
 		@apply px-5 h-full text-white lg:basis-0 basis-full text-center;
 	}
 
