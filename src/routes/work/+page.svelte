@@ -2,14 +2,14 @@
 	import ListIcon from '$lib/assets/icons/list-icon.svelte';
 	import CompactListIcon from '$lib/assets/icons/compact-list-icon.svelte';
 	import GridIcon from '$lib/assets/icons/grid-icon.svelte';
-	import { Result } from 'postcss';
 
 	const content = [
 		{
 			description:
 				'A website that uses yfinance and observable charts to plot real-time price movements',
 			title: 'Live Stock Viewer',
-			slug: 'live-stocks'
+			slug: 'live-stocks',
+			icon: import('$lib/assets/images/stock-viewer-ss.png')
 		},
 		{
 			description:
@@ -56,7 +56,8 @@
 		{
 			description: 'A space invaders spinoff made a 100x harder and given eerie sound effects',
 			title: 'Space Invaders',
-			slug: 'space-invaders'
+			slug: 'space-invaders',
+			icon: import('$lib/assets/images/space-invaders-ss.png')
 		},
 		{
 			description:
@@ -67,11 +68,11 @@
 	];
 
 	const shortDescription = (desc: string): string => {
-		let truncated = desc.slice(0, 65).split(" ");
-    truncated.pop()
-    const lastCharacter = truncated[truncated.length - 1]
-    truncated[truncated.length - 1] = lastCharacter.replace('.', '').replace(/$/i, '...')
-		return truncated.join(" ");
+		let truncated = desc.slice(0, 65).split(' ');
+		truncated.pop();
+		const lastCharacter = truncated[truncated.length - 1];
+		truncated[truncated.length - 1] = lastCharacter.replace('.', '').replace(/$/i, '...');
+		return truncated.join(' ');
 	};
 
 	let activeViewMode = 'list';
@@ -111,8 +112,14 @@
 				href={`work/${item.slug}`}
 			>
 				<div
-					class={`lg:w-72 lg:basis-0 basis-1/2 grow aspect-square bg-emerald-950 rounded-[4px] ${rev ? 'ml-6 lg:ml-20' : 'mr-6 lg:mr-20'}`}
-				></div>
+					class={`overflow-hidden lg:w-72 lg:basis-0 basis-1/2 grow aspect-square bg-emerald-950 rounded-[4px] ${rev ? 'ml-6 lg:ml-20' : 'mr-6 lg:mr-20'}`}
+				>
+					{#if item.icon}
+						{#await item.icon then { default: src }}
+							<img class="scale-[103%] object-cover w-full h-full" {src} alt="Project icon" />
+						{/await}
+					{/if}
+				</div>
 				<div class="flex flex-col basis-1/2 lg:flex-1 justify-center">
 					<h2 class="lg:text-5xl text-2xl lg:mb-6 mb-2">{item.title}</h2>
 					<p class="text-[10px] lg:text-base">
@@ -132,10 +139,18 @@
 						class="flex absolute top-0 bottom-0 left-0 right-0 w-full z-20"
 						href={`/work/${item.slug}`}><br /></a
 					>
-					<div class="absolute bg-emerald-950 top-0 bottom-0 left-0 right-0 rounded-[4px]"></div>
-					<div class="p-5 z-10">
-						<h2 class="lg:text-4xl text-lg mb-4 block">{item.title}</h2>
-						<p class="text-[6px] lg:text-sm">
+					<div
+						class="overflow-hidden absolute bg-emerald-950 top-0 bottom-0 left-0 right-0 rounded-[4px]"
+					>
+						{#if item.icon}
+							{#await item.icon then { default: src }}
+								<img class="scale-[103%] object-cover w-full h-full" {src} alt="Project icon" />
+							{/await}
+						{/if}
+					</div>
+					<div class="z-10">
+						<h2 class="lg:text-4xl text-lg p-5 block bg-black bg-opacity-80 m-0">{item.title}</h2>
+						<p class="text-[6px] lg:text-sm px-5 pb-5 bg-black bg-opacity-80">
 							{item.description}
 						</p>
 					</div>
@@ -145,13 +160,21 @@
 	{:else if activeViewMode === 'compact'}
 		{#each content as item, i}
 			<a class="flex hover:bg-[#0c0c0c] gap-8 w-full" href={`work/${item.slug}`}>
-				<div class="lg:w-28 w-16 my-auto aspect-square bg-emerald-950 rounded-[4px]"></div>
+				<div
+					class="overflow-hidden lg:w-28 w-16 my-auto aspect-square bg-emerald-950 rounded-[4px]"
+				>
+					{#if item.icon}
+						{#await item.icon then { default: src }}
+							<img class="scale-[103%] object-cover w-full h-full" {src} alt="Project icon" />
+						{/await}
+					{/if}
+				</div>
 				<div class="flex flex-col flex-1 justify-center">
 					<h2 class="lg:text-2xl text-lg lg:mb-2 mb-1">{item.title}</h2>
 					<p class="text-[12px] lg:text-base block lg:hidden">
 						{shortDescription(item.description)}
 					</p>
-          <p class="text-[12px] lg:text-base hidden lg:block">
+					<p class="text-[12px] lg:text-base hidden lg:block">
 						{item.description}
 					</p>
 				</div>
@@ -165,7 +188,7 @@
 		@apply hover:bg-neutral-950 rounded-md h-8 w-8 flex items-center justify-center;
 	}
 
-  .view-mode-btn.grid-view-btn {
+	.view-mode-btn.grid-view-btn {
 		@apply lg:flex hidden;
 	}
 

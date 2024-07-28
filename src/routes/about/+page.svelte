@@ -78,8 +78,9 @@
 			</Paragraph>
 			<Paragraph>
 				I currently work full time as a full stack developer working with Python, Ruby, Javascript
-				and sometimes Java. Check out my blog to know more about what interests me. Find me at my
-				socials
+				and sometimes Java. Check out my <a href="work">projects</a> to know more about what
+				interests me. Follow my
+				<a href="blog">blog</a> for useful technical articles. Find me at my socials
 				<span class="lg:hidden inline">below.</span><span class="hidden lg:inline"
 					>on the right.</span
 				>
@@ -88,13 +89,17 @@
 		<div
 			class="flex lg:flex-col lg:w-32 lg:border-l-[5px] border-l-emerald-900 justify-center items-center gap-5 lg:my-0 my-5"
 		>
-			<a href="https://www.github.com/ARahimKhan" target="_blank">
+			<a class="icon-link" href="https://www.github.com/ARahimKhan" target="_blank">
 				<GithubIcon width="55" height="55" />
 			</a>
-			<a href="https://www.linkedin.com/in/abdul-rahim-khan-6251b3224/" target="_blank">
+			<a
+				class="icon-link"
+				href="https://www.linkedin.com/in/abdul-rahim-khan-6251b3224/"
+				target="_blank"
+			>
 				<LinkedinIcon width="50" height="50" />
 			</a>
-			<a href="mailto:abdulrahimkhan1999@gmail.com" target="_blank">
+			<a class="icon-link" href="mailto:abdulrahimkhan1999@gmail.com" target="_blank">
 				<EmailIcon width="55" height="55" />
 			</a>
 		</div>
@@ -104,7 +109,7 @@
 		<Paragraph>
 			Lets build great things together. Find my socials above or just shoot a message below and I
 			will get in touch!
-    </Paragraph>
+		</Paragraph>
 		<form class="flex flex-col" method="post">
 			<input type="text" placeholder="Your name" />
 			<input type="text" placeholder="Your email" />
@@ -129,5 +134,9 @@
 
 	textarea {
 		height: 100px;
+	}
+
+	a:not(.icon-link) {
+		@apply text-white hover:bg-emerald-800 bg-emerald-900 p-1;
 	}
 </style>

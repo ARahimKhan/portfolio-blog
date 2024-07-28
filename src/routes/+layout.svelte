@@ -5,8 +5,10 @@
 
 	let container: HTMLElement;
 
-	afterNavigate(() => {
-		container.scrollTo(0, 0);
+	afterNavigate((navigation) => {
+		if (navigation.type === 'link' || navigation.type === 'goto') {
+			container.scrollTo(0, 0);
+		}
 	});
 
 	export const snapshot = {
@@ -23,9 +25,16 @@
 	<div class="flex flex-row h-16 bg-emerald-800 items-center px-5">
 		<p class="font-bold text-2xl hidden lg:block">Blogfolio</p>
 		<div class="lg:flex-1 lg:block hidden"></div>
-		<a class={`navlink ${$page.url.pathname.split('/')[1] === 'work' ? 'active' : ''}`} href="/work">Work</a>
-		<a class={`navlink ${$page.url.pathname.split('/')[1] === 'blog' ? 'active' : ''}`} href="/blog">Blog</a>
-		<a class={`navlink ${$page.url.pathname.split('/')[1] === 'about' ? 'active' : ''}`} href="/about">About</a>
+		<a class={`navlink ${$page.url.pathname.split('/')[1] === 'work' ? 'active' : ''}`} href="/work"
+			>Work</a
+		>
+		<a class={`navlink ${$page.url.pathname.split('/')[1] === 'blog' ? 'active' : ''}`} href="/blog"
+			>Blog</a
+		>
+		<a
+			class={`navlink ${$page.url.pathname.split('/')[1] === 'about' ? 'active' : ''}`}
+			href="/about">About</a
+		>
 	</div>
 	<!-- MAIN CONTENT AREA -->
 	<div bind:this={container} class="flex-1 overflow-y-scroll overflow-x-hidden">
@@ -37,10 +46,10 @@
 	.navlink {
 		justify-content: center;
 		align-content: center;
-    align-items: center;
+		align-items: center;
 		font-family: 'Quicksand', sans-serif;
 		font-weight: 500;
-    display: flex;
+		display: flex;
 		@apply px-5 h-full text-white lg:basis-0 basis-full text-center;
 	}
 
@@ -48,7 +57,7 @@
 		@apply bg-emerald-700;
 	}
 
-  .navlink.active {
-    @apply border-solid border-transparent border-0 border-y-4 border-b-gray-400 border-t-transparent;
-  }
+	.navlink.active {
+		@apply border-solid border-transparent border-0 border-y-4 border-b-gray-400 border-t-transparent;
+	}
 </style>
