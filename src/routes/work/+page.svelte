@@ -15,7 +15,8 @@
 			description:
 				'Performant and scalable data aggregation and transformation pipeline built with Kafka',
 			title: 'ETL',
-			slug: 'etl'
+			slug: 'etl',
+			icon: import('$lib/assets/images/etl-system-design-icon.png')
 		},
 		{
 			description:
@@ -108,7 +109,7 @@
 		{#each content as item, i}
 			{@const rev = i % 2}
 			<a
-				class={`flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
+				class={`work-item flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
 				href={`work/${item.slug}`}
 			>
 				<div
@@ -134,7 +135,7 @@
 	{:else if activeViewMode === 'grid'}
 		<div class="grid grid-cols-2 gap-x-8 gap-y-8">
 			{#each content as item}
-				<div class="relative flex flex-col hover:bg-[#0c0c0c] justify-end aspect-square">
+				<div class="work-item relative flex flex-col hover:bg-[#0c0c0c] justify-end aspect-square">
 					<a
 						class="flex absolute top-0 bottom-0 left-0 right-0 w-full z-20"
 						href={`/work/${item.slug}`}><br /></a
@@ -159,7 +160,7 @@
 		</div>
 	{:else if activeViewMode === 'compact'}
 		{#each content as item, i}
-			<a class="flex hover:bg-[#0c0c0c] gap-8 w-full" href={`work/${item.slug}`}>
+			<a class="work-item flex hover:bg-[#0c0c0c] gap-8 w-full" href={`work/${item.slug}`}>
 				<div
 					class="overflow-hidden lg:w-28 w-16 my-auto aspect-square bg-emerald-950 rounded-[4px]"
 				>
@@ -190,6 +191,12 @@
 
 	.view-mode-btn.grid-view-btn {
 		@apply lg:flex hidden;
+	}
+
+	@media (min-width: 1024px) {
+		.work-item:not(:hover) img {
+			filter: sepia(100%) saturate(300%) brightness(35%) hue-rotate(108deg);
+		}
 	}
 
 	.view-mode-btn :global(svg:not(.active-mode)) {

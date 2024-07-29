@@ -4,6 +4,9 @@
 	import EmailIcon from '$lib/assets/icons/email.svelte';
 	import Paragraph from '$lib/blog-components/elements/paragraph.svelte';
 	import SectionHeader from '$lib/blog-components/elements/section-header.svelte';
+	import type { ActionData } from './$types';
+
+	export let form: ActionData | undefined;
 
 	const descriptors = [
 		'Rahim',
@@ -18,7 +21,7 @@
 
 	const TICKS_PER_DESCRIPTOR = 80;
 
-	let timer: number | undefined = undefined;
+	let timer: any = undefined;
 	let tick = 0;
 	$: {
 		clearInterval(timer);
@@ -51,6 +54,45 @@
 	}
 </script>
 
+{#if form}
+	<div class={`flex flex-row ${form?.success ? 'bg-green-700' : 'bg-red-900'}`}>
+		{#if form?.blank}
+			<div class="text-white px-5 py-3 flex justify-center items-center">
+				Please enter all required details
+			</div>
+		{:else if form?.upload}
+			<div class="text-white px-5 py-3 flex justify-center items-center">
+				<span
+					>An error occured while sending your message. Contact me <a
+						class="underline font-bold"
+						href="mailto:abdulrahimkhan1999@gmail.com">on my email</a
+					></span
+				>
+			</div>
+		{:else if form?.invalid}
+			<div class="text-white px-5 py-3 flex justify-center items-center">
+				<span
+					>Your {form.item} appears to be invalid. Please try again or contact me
+					<a class="underline font-bold" href="mailto:abdulrahimkhan1999@gmail.com">on my email</a
+					></span
+				>
+			</div>
+		{:else if form?.success}
+			<div class="text-white px-5 py-3 flex justify-center items-center">
+				Successfully sent! I will get in touch with you soon.
+			</div>
+		{/if}
+		<div class="flex-1"></div>
+		<button
+			class="text-xl flex justify-center items-center aspect-square px-5 py-3 hover:bg-white hover:bg-opacity-5"
+			on:click={() => {
+				form = undefined;
+			}}
+		>
+			⨯
+		</button>
+	</div>
+{/if}
 <div class="flex flex-col mx-auto lg:w-[60%] p-8 lg:px-0 lg:py-20 lg:gap-16 gap-5">
 	<div class="flex lg:flex-row flex-col lg:mb-12 gap-10 lg:gap-0 items-center">
 		<img
@@ -73,9 +115,10 @@
 			<Paragraph>
 				I am a programmer and web developer in Python, Ruby, Javascript and sometimes Java. Check
 				out my
-				<a href="work">projects</a>
+				<a class="filled-link" href="work">projects</a>
 				to know more about what interests me. Follow my
-				<a href="blog">blog</a> for useful technical articles. Find me at my socials
+				<a class="filled-link" href="blog">blog</a> for useful technical articles. Find me at my
+				socials
 				<span class="lg:hidden inline">below.</span>
 				<span class="hidden lg:inline">on the right.</span>
 			</Paragraph>
@@ -110,9 +153,9 @@
 			will get in touch!
 		</Paragraph>
 		<form class="flex flex-col" method="post">
-			<input type="text" placeholder="Your name" />
-			<input type="text" placeholder="Your email" />
-			<textarea placeholder="Message" />
+			<input type="text" name="name" required placeholder="Your name" />
+			<input type="text" name="email" required placeholder="Your email" />
+			<textarea name="message" required placeholder="Message" />
 			<button class="px-4 py-3 my-5 ml-auto bg-emerald-800 hover:bg-emerald-900" type="submit"
 				>Send Message</button
 			>
@@ -135,7 +178,7 @@
 		height: 100px;
 	}
 
-	a:not(.icon-link) {
+	a.filled-link {
 		@apply text-white hover:bg-emerald-800 bg-emerald-900 p-1;
 	}
 </style>
