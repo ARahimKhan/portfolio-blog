@@ -120,7 +120,7 @@
 		{#each content as item, i}
 			{@const rev = i % 2}
 			<a
-				class={`work-item flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
+				class={`work-item w-full flex ${rev ? 'flex-row-reverse' : 'flex-row'} hover:bg-[#0c0c0c]`}
 				href={`work/${item.slug}`}
 			>
 				<div
@@ -136,7 +136,7 @@
 						{/await}
 					{/if}
 				</div>
-				<div class="flex flex-col basis-1/2 lg:flex-1 justify-center md:py-5 py-2">
+				<div class="flex flex-col lg:basis-0 basis-1/2 lg:flex-1 justify-center md:py-5 py-2">
 					<h2 class="lg:text-5xl text-2xl lg:mb-6 mb-2">{item.title}</h2>
 					<p class="text-[10px] lg:text-base">
 						{item.description}
@@ -151,7 +151,7 @@
 					</div>
 				</div>
 				<div
-					class={`lg:w-32 w-0 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}
+					class='xl:w-32 w-0 bg-transparent'
 				></div>
 			</a>
 		{/each}
