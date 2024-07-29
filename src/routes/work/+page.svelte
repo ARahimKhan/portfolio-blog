@@ -9,62 +9,73 @@
 				'A website that uses yfinance and observable charts to plot real-time price movements',
 			title: 'Live Stock Viewer',
 			slug: 'live-stocks',
-			icon: import('$lib/assets/images/stock-viewer-ss.png')
+			icon: import('$lib/assets/images/stock-viewer-ss.png'),
+			technologies: ['python', 'react', 'next.js', 'typescript', 'django', 'redis']
 		},
 		{
 			description:
 				'Performant and scalable data aggregation and transformation pipeline built with Kafka',
 			title: 'ETL',
 			slug: 'etl',
-			icon: import('$lib/assets/images/etl-system-design-icon.png')
+			icon: import('$lib/assets/images/etl-system-design-icon.png'),
+			technologies: ['python', 'kafka', 'docker', 'postgresql', 'aws']
 		},
 		{
 			description:
 				'College activities and student-club interaction platform. Supports articles, events, venues, leaderboards',
 			title: 'Junction',
-			slug: 'junction'
+			slug: 'junction',
+			technologies: ['java', 'python', 'kotlin', 'react native', 'node.js', 'android']
 		},
 		{
 			description:
 				'A web UI to generate Kubernetes yaml config files through a drag-and-drop interface',
 			title: 'Kubernetes configurator',
-			slug: 'k8s-configurator'
+			slug: 'k8s-configurator',
+			technologies: ['python', 'fastapi', 'react', 'typescript']
 		},
 		{
 			description:
 				'An application that maps all relations in a database based on conventions and constraints',
-			title: 'Database relation viewer',
-			slug: 'db-relations-viewer'
+			title: 'Database Mapper',
+			slug: 'db-mapper',
+			technologies: ['ruby on rails', 'svelte', 'ruby', 'typescript', 'javascript']
 		},
 		{
 			description:
 				'A virtual machine and disassembler that supports a minimal instruction set. Performs semantic and syntactic checks as well',
 			title: 'Emulator001',
-			slug: 'emulator001'
+			slug: 'emulator001',
+			technologies: ['c', 'c++', 'asm', 'cli']
 		},
 		{
 			description:
 				'A GUI library written solely in SDL with C++ directly utilizing textures and frames',
 			title: 'SDL GUI API',
-			slug: 'sdl-gui-api'
+			slug: 'sdl-gui-api',
+			technologies: ['c', 'c++', 'sdl2', 'winapi']
 		},
 		{
 			description:
 				'A Youtube Music website surfer and music downloader with support for organizing, annotating and searching for songs',
 			title: 'YouMuPi',
-			slug: 'youmupi'
+			slug: 'youmupi',
+			technologies: ['python', 'linux', 'cli']
 		},
 		{
 			description: 'A space invaders spinoff made a 100x harder and given eerie sound effects',
 			title: 'Space Invaders',
 			slug: 'space-invaders',
-			icon: import('$lib/assets/images/space-invaders-ss.png')
+			icon: import('$lib/assets/images/space-invaders-ss.png'),
+			technologies: ['python', 'pygame']
 		},
 		{
 			description:
-				"Classic hissssssssssssssssstoric snek game. Go around and try to eat everything. Don't bite your own tail",
+				"Classsssic snek game. Go around and try to eat everything. Don't bite your own tail",
 			title: 'Snake',
-			slug: 'snake'
+			slug: 'snake',
+			icon: import('$lib/assets/images/snake-game-ss.png'),
+			technologies: ['python', 'pygame']
 		}
 	];
 
@@ -117,15 +128,27 @@
 				>
 					{#if item.icon}
 						{#await item.icon then { default: src }}
-							<img class="scale-[103%] object-cover w-full h-full" {src} alt="Project icon" />
+							<img
+								class="scale-[103%] object-cover w-full h-full aspect-square"
+								{src}
+								alt="Project icon"
+							/>
 						{/await}
 					{/if}
 				</div>
-				<div class="flex flex-col basis-1/2 lg:flex-1 justify-center">
+				<div class="flex flex-col basis-1/2 lg:flex-1 justify-center md:py-5 py-2">
 					<h2 class="lg:text-5xl text-2xl lg:mb-6 mb-2">{item.title}</h2>
 					<p class="text-[10px] lg:text-base">
 						{item.description}
 					</p>
+					<div class="flex flex-row flex-wrap mt-2 md:mt-5 gap-[2px] md:gap-3">
+						{#each item.technologies as tech}
+							<span
+								class="font-mono text-[8px] md:text-sm text-emerald-700 bg-neutral-950 py-[1px] px-1 rounded"
+								>{tech}</span
+							>
+						{/each}
+					</div>
 				</div>
 				<div
 					class={`lg:w-32 w-0 aspect-square bg-transparent ${rev ? 'lg:mr-8' : 'lg:ml-8'}`}
@@ -154,13 +177,24 @@
 						<p class="text-[6px] lg:text-sm px-5 pb-5 bg-black bg-opacity-80">
 							{item.description}
 						</p>
+						<div class="flex flex-row flex-wrap gap-2 px-5 pb-3 bg-black bg-opacity-80 m-0">
+							{#each item.technologies as tech}
+								<span
+									class="font-mono text-[8px] md:text-xs text-emerald-700 bg-neutral-950 py-[1px] px-1 rounded"
+									>{tech}</span
+								>
+							{/each}
+						</div>
 					</div>
 				</div>
 			{/each}
 		</div>
 	{:else if activeViewMode === 'compact'}
 		{#each content as item, i}
-			<a class="work-item flex hover:bg-[#0c0c0c] gap-8 w-full" href={`work/${item.slug}`}>
+			<a
+				class="work-item flex hover:bg-[#0c0c0c] gap-8 w-full md:p-3 pb-2 pt-1 pl-1"
+				href={`work/${item.slug}`}
+			>
 				<div
 					class="overflow-hidden lg:w-28 w-16 my-auto aspect-square bg-emerald-950 rounded-[4px]"
 				>
@@ -178,6 +212,14 @@
 					<p class="text-[12px] lg:text-base hidden lg:block">
 						{item.description}
 					</p>
+					<div class="flex flex-row flex-wrap mt-2 gap-[2px]">
+						{#each item.technologies.slice(0, 3) as tech}
+							<span
+								class="font-mono text-[8px] md:text-sm text-emerald-700 bg-neutral-950 py-[1px] px-1 rounded"
+								>{tech}</span
+							>
+						{/each}
+					</div>
 				</div>
 			</a>
 		{/each}
