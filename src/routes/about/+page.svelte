@@ -8,13 +8,7 @@
 
 	export let form: ActionData | undefined;
 
-	const descriptors = [
-		'Rahim',
-		'backend engineer',
-		'software developer',
-		'programmer',
-		'fullstack developer'
-	];
+	const descriptors = ['Rahim', 'fullstack developer', 'backend developer', 'programmer'];
 	let currentDescriptor = 0;
 	let displayDescriptor = '';
 	let showCursor = false;
@@ -113,8 +107,7 @@
 		<div class="flex-1 mr-6">
 			<SectionHeader>Who am I</SectionHeader>
 			<Paragraph>
-				I am a programmer and web developer in Python, Ruby, Javascript and sometimes Java. Check
-				out my
+				A programmer and web developer in Python, Ruby, Javascript and sometimes Java. Check out my
 				<a class="filled-link" href="work">projects</a>
 				to know more about what interests me. Follow my
 				<a class="filled-link" href="blog">blog</a> for useful technical articles. Find me at my
@@ -123,9 +116,9 @@
 				<span class="hidden lg:inline">on the right.</span>
 			</Paragraph>
 			<Paragraph>
-				I am a maker, a generalist and a dreamer. Nothing gives me as much enjoyment as designing
-				solutions and seeing them through to completion. I have been playing around with programming
-				languages since I was 12 and have continued learning everyday since.
+				I have been playing around with programming languages since I was 13 and have continued
+				learning everyday since. Nothing gives me as much satisfaction as designing novel solutions
+				to complex problems and seeing them through to completion.
 			</Paragraph>
 		</div>
 		<div
