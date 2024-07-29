@@ -71,19 +71,18 @@
 		<div class="flex-1 mr-6">
 			<SectionHeader>Who am I</SectionHeader>
 			<Paragraph>
-				I am a maker, a generalist and a dreamer. Nothing gives me as much enjoyment as designing
-				solutions and seeing them through to completion. I have been playing around with programming
-				languages since I was 12. First learnt game development in C++, made GUIs with Java and dove
-				head first into embedded electronics, no training wheels.
+				I am a programmer and web developer in Python, Ruby, Javascript and sometimes Java. Check
+				out my
+				<a href="work">projects</a>
+				to know more about what interests me. Follow my
+				<a href="blog">blog</a> for useful technical articles. Find me at my socials
+				<span class="lg:hidden inline">below.</span>
+				<span class="hidden lg:inline">on the right.</span>
 			</Paragraph>
 			<Paragraph>
-				I currently work full time as a full stack developer working with Python, Ruby, Javascript
-				and sometimes Java. Check out my <a href="work">projects</a> to know more about what
-				interests me. Follow my
-				<a href="blog">blog</a> for useful technical articles. Find me at my socials
-				<span class="lg:hidden inline">below.</span><span class="hidden lg:inline"
-					>on the right.</span
-				>
+				I am a maker, a generalist and a dreamer. Nothing gives me as much enjoyment as designing
+				solutions and seeing them through to completion. I have been playing around with programming
+				languages since I was 12 and have continued learning everyday since.
 			</Paragraph>
 		</div>
 		<div
