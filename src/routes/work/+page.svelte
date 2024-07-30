@@ -150,9 +150,7 @@
 						{/each}
 					</div>
 				</div>
-				<div
-					class='xl:w-32 w-0 bg-transparent'
-				></div>
+				<div class="xl:w-32 w-0 bg-transparent"></div>
 			</a>
 		{/each}
 	{:else if activeViewMode === 'grid'}
@@ -238,6 +236,13 @@
 	@media (min-width: 1024px) {
 		.work-item:not(:hover) img {
 			filter: sepia(100%) saturate(300%) brightness(35%) hue-rotate(108deg);
+      transition: filter 200ms, scale 200ms;
+		}
+
+		.work-item:hover img {
+      scale: 106%;
+      filter: sepia(0%) saturate(100%) brightness(100%) hue-rotate(0deg);
+      transition: filter 500ms, scale 500ms;
 		}
 	}
 
